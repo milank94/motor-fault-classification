@@ -1,0 +1,4 @@
+pyprojroot==0.2.0
+pytest==0.0.0
+pandas==1.2.3
+PyYAML==5.4.1

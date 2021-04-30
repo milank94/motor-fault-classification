@@ -1,0 +1,15 @@
+# This docker container creates a python environment
+# to train a model.
+
+FROM python:3.7-stretch
+
+COPY requirements.txt /root/requirements.txt
+
+RUN apt-get update \
+    && apt-get -y autoremove \
+    && apt-get -y clean
+
+RUN pip install --upgrade pip \
+    && pip install -r /root/requirements.txt
+
+ENTRYPOINT ["python", "train_pipeline.py" ]
