@@ -28,7 +28,7 @@ import data_acquisition.data_acquisition_config as config
 logging.basicConfig(level=logging.INFO)
 # -
 
-Dataset = collections.namedtuple('Dataset', 'normal hori_1_0mm hori_2_0mm imbalance')
+Dataset = collections.namedtuple('Dataset', 'normal horizontal imbalance')
 
 
 def _dataReader(path_names:list) -> list:
@@ -46,8 +46,6 @@ def _dataReader(path_names:list) -> list:
     
     sequences = list()
     
-    logging.info(f"Loading raw data.")
-    
     for name in path_names:
         data = pd.read_csv(name, header=None)
         sequences.append(data.values)
@@ -64,10 +62,13 @@ def get_data() -> Dataset:
     dataset (Dataset): named tuple of (data_n)
     '''
     
+    logging.info(f"Loading raw data.")
+    
     data_n = np.stack(_dataReader(config.NORMAL_FILE_NAMES))
-    data_1_0mm = np.stack(_dataReader(config.HORI_MIS_FILE_NAMES_1))
-    data_2_0mm = np.stack(_dataReader(config.HORI_MIS_FILE_NAMES_2))
+    data_horizontal = np.stack(_dataReader(config.HORI_MIS_FILE_NAMES))
     data_imbalance = np.stack(_dataReader(config.IMBALANCE_FILE_NAMES))
     
-    dataset = Dataset(data_n, data_1_0mm, data_2_0mm, data_imbalance)
+    logging.info(f"Load complete.")
+    
+    dataset = Dataset(data_n, data_horizontal, data_imbalance)
     return dataset

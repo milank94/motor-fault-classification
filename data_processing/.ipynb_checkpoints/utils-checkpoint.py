@@ -10,7 +10,7 @@ from scipy.fft import rfft
 
 def _dataScaler(data:list) -> list:
     '''
-    Reads in data and returns a scaled list
+    Reads in data and returns a scaled list.
     
     params:
     ---
@@ -58,7 +58,7 @@ def _downSampler(data:list, start_index:int, sample_rate:int) -> list:
 
 def _FFT(data:list) -> list:
     '''
-    Reads in resampled data and peforms a Fast Fourier Transform
+    Reads in resampled data and peforms a Fast Fourier Transform with DC offset removal
     
     params:
     ---

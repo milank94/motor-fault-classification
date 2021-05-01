@@ -1,4 +1,7 @@
+numpy==1.20.2
 pyprojroot==0.2.0
-pytest==0.0.0
 pandas==1.2.3
-PyYAML==5.4.1
+keras==2.4.3
+matplotlib==3.4.1
+scikit_learn==0.24.2
+scipy==1.6.3

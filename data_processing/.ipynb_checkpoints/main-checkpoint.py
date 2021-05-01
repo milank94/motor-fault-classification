@@ -34,29 +34,25 @@ def get_train_test_data(raw_data:Dataset) -> Dataset:
     '''   
     logging.info(f"Data is being resampled at a sample rate of: {config.RESAMPLE_RATE}")    
     data_n = _downSampler(raw_data.normal, 0, config.RESAMPLE_RATE)
-    data_1_0mm = _downSampler(raw_data.hori_1_0mm, 0, config.RESAMPLE_RATE)
-    data_2_0mm = _downSampler(raw_data.hori_2_0mm, 0, config.RESAMPLE_RATE)
+    data_horizontal = _downSampler(raw_data.horizontal, 0, config.RESAMPLE_RATE)
     data_imbalance = _downSampler(raw_data.imbalance, 0, config.RESAMPLE_RATE)
  
-    logging.info(f"Scaling data.")
+    logging.info(f"Scaling the data.")
     data_n = _dataScaler(data_n)
-    data_1_0mm = _dataScaler(data_1_0mm)
-    data_2_0mm = _dataScaler(data_2_0mm)
+    data_horizontal = _dataScaler(data_horizontal)
     data_imbalance = _dataScaler(data_imbalance)
        
     logging.info(f"Performing FFT.")
     data_n = _FFT(data_n)
-    data_1_0mm = _FFT(data_1_0mm)
-    data_2_0mm = _FFT(data_2_0mm)
+    data_horizontal = _FFT(data_horizontal)
     data_imbalance = _FFT(data_imbalance)
     
     y_1 = np.zeros(int(len(data_n)),dtype=int)
-    #y_2 = np.full(int(len(data_1_0mm)),1)
-    y_3 = np.full(int(len(data_2_0mm)),1)
-    y_4 = np.full(int(len(data_imbalance)),2)
-    y = np.concatenate((y_1, y_3, y_4))
+    y_2 = np.full(int(len(data_horizontal)),1)
+    y_3 = np.full(int(len(data_imbalance)),2)
+    y = np.concatenate((y_1, y_2, y_3))
     
-    X = np.concatenate((data_n, data_2_0mm, data_imbalance))
+    X = np.concatenate((data_n, data_horizontal, data_imbalance))
     
     logging.info(f"Spliting data to a test size of: {config.DATA_TEST_SIZE}")
     
