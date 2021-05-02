@@ -12,7 +12,7 @@
 
 ## Results
 
->Found on Medium: 
+>Found on Medium: https://milan-kordic.medium.com/industrial-motor-fault-classification-using-deep-learning-with-iot-implications-fd36ddc8ad5b
 
 ```python
 
