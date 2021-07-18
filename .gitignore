@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Mac specific
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+.pyc
+
+.gitkeep
+
+# data
+data/*
+!data/.gitkeep
+
+# output
+output/*
+!output/.gitkeep
