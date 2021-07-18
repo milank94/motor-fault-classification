@@ -5,13 +5,14 @@ __pycache__/
 
 
 # Mac specific
-.DS_Store
+*.DS_Store
 
 # Jupyter Notebook
-.ipynb_checkpoints
-.pyc
+*.ipynb_checkpoints
+*.pyc
+*.ipynb
 
-.gitkeep
+*.gitkeep
 
 # data
 data/*
