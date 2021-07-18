@@ -47,8 +47,8 @@ def get_data() -> Dataset:
     data_horizontal = np.stack(_dataReader(config.HORI_MIS_FILE_NAMES))
     data_vertical = np.stack(_dataReader(config.VERT_MIS_FILE_NAMES))
     data_imbalance = np.stack(_dataReader(config.IMBALANCE_FILE_NAMES))
-    data_overhang = data_imbalance = np.stack(_dataReader(config.OVERHANG_FILE_NAMES))
-    data_underhang = data_imbalance = np.stack(_dataReader(config.UNDERHANG_FILE_NAMES))
+    data_overhang = np.stack(_dataReader(config.OVERHANG_FILE_NAMES))
+    data_underhang = np.stack(_dataReader(config.UNDERHANG_FILE_NAMES))
     
     logging.info(f"Load complete.")
     
