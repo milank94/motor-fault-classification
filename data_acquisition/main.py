@@ -1,35 +1,14 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.11.1
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
 from pyprojroot import here as get_project_root
 import os
 os.chdir(get_project_root()) # hack for notebook development
 
-# +
-import os
-import sys
 import pandas as pd
 import numpy as np
 import logging
-import collections
 import data_acquisition.data_acquisition_config as config
+from data_acquisition.custom_types import Dataset
 
 logging.basicConfig(level=logging.INFO)
-# -
-
-Dataset = collections.namedtuple('Dataset', 'normal horizontal imbalance')
-
 
 def _dataReader(path_names:list) -> list:
     '''
@@ -64,11 +43,14 @@ def get_data() -> Dataset:
     
     logging.info(f"Loading raw data.")
     
-    data_n = np.stack(_dataReader(config.NORMAL_FILE_NAMES))
+    data_normal = np.stack(_dataReader(config.NORMAL_FILE_NAMES))
     data_horizontal = np.stack(_dataReader(config.HORI_MIS_FILE_NAMES))
+    data_vertical = np.stack(_dataReader(config.VERT_MIS_FILE_NAMES))
     data_imbalance = np.stack(_dataReader(config.IMBALANCE_FILE_NAMES))
+    data_overhang = data_imbalance = np.stack(_dataReader(config.OVERHANG_FILE_NAMES))
+    data_underhang = data_imbalance = np.stack(_dataReader(config.UNDERHANG_FILE_NAMES))
     
     logging.info(f"Load complete.")
     
-    dataset = Dataset(data_n, data_horizontal, data_imbalance)
+    dataset = Dataset(data_normal, data_horizontal, data_vertical, data_imbalance, data_overhang, data_underhang)
     return dataset

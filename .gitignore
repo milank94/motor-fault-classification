@@ -21,3 +21,6 @@ data/*
 # output
 output/*
 !output/.gitkeep
+
+# Other
+*.csv
