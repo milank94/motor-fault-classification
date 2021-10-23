@@ -13,7 +13,3 @@
 ## Results
 
 >Found on Medium: https://towardsdatascience.com/industrial-motor-fault-classification-using-deep-learning-with-iot-implications-fd36ddc8ad5b
-
-```python
-
-```
