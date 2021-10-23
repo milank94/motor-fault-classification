@@ -2,7 +2,6 @@
 Any config specific to model training step goes here.
 """
 
-
 # General configuration
 MONITOR = 'val_loss'
 VAL_SPLIT = 0.2
