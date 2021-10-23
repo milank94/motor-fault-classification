@@ -1,4 +1,4 @@
-# Data Aquisition
+# Data Acquisition
 
 ## Description
 
@@ -7,8 +7,5 @@
 
 ## Usage
 
->The `load_data` function of `main.py` returns a named tuple collection of NumPy arrays ready for preprocessing and EDA.
-
-```python
-
-```
+>The `get_save_data` function of `utils.py` returns a named tuple collection of NumPy arrays ready for preprocessing and EDA.
+>The data is saved in pickle format for faster retrieval and processing.
