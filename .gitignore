@@ -26,3 +26,4 @@ output/*
 
 # Other
 *.csv
+*.p
