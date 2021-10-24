@@ -1,11 +1,14 @@
 name: motor-fault-classification
 channels:
+  - defaults
   - conda-forge
 dependencies:
+  - pip>=8.1.2
   - python=3.8.8
   - numpy=1.20.2
   - pandas=1.2.3
-  - keras=2.4.3
-  - matplotlib=3.4.1
   - scikit-learn=0.24.2
+  - matplotlib=3.4.1
   - scipy=1.6.3
+  - pip:
+    - tensorflow>=0.12.0rc1
